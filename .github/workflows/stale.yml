@@ -26,3 +26,4 @@ jobs:
           git remote add upstream https://github.com/mannaandpoem/OpenManus.git
           git fetch upstream
           git merge upstream/main  # 或者 upstream/master，取决于原始仓库的主分支
+          git push origin main
