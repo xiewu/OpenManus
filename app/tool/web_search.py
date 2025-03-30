@@ -16,6 +16,7 @@ from app.tool.search import (
     GoogleSearchEngine,
     WebSearchEngine,
 )
+from app.tool.search.base import SearchItem
 
 
 class SearchResult(BaseModel):
@@ -124,7 +125,7 @@ class WebContentFetcher:
             Extracted text content or None if fetching fails
         """
         headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+            "WebSearch": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
         }
 
         try:
@@ -399,7 +400,7 @@ class WebSearch(BaseTool):
         query: str,
         num_results: int,
         search_params: Dict[str, Any],
-    ) -> List[Any]:
+    ) -> List[SearchItem]:
         """Execute search with the given engine and parameters."""
         return await asyncio.get_event_loop().run_in_executor(
             None,
